@@ -3,12 +3,12 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 const ListScreen = () => {
     const names = [
-        { name: 'Anderson', id: 1 },
-        { name: 'George', id: 2 },
-        { name: 'Ugonna', id: 3 },
-        { name: 'Richmond', id: 4 },
-        { name: 'Samuel', id: 5 },
-        { name: 'Digil', id: 6 },
+        { name: 'Anderson' },
+        { name: 'George' },
+        { name: 'Ugonna' },
+        { name: 'Richmond' },
+        { name: 'Samuel' },
+        { name: 'Digilus' },
     ];
 
     const renderName = ({ item }) => {
@@ -18,7 +18,13 @@ const ListScreen = () => {
     return (
         <View>
             <Text>This is my list screen.</Text>
-            <FlatList data={names} renderItem={renderName} />
+            <FlatList 
+                data={names} 
+                renderItem={renderName} 
+                keyExtractor={({name}) => { return name } }
+                horizontal
+                showsHorizontalScrollIndicator={false}
+            />
         </View>
     );
 }
@@ -28,7 +34,9 @@ const styles = StyleSheet.create({
         backgroundColor: 'tomato',
         padding: 30,
         width: '100%',
-        color: 'black'
+        color: 'black',
+        marginVertical: 50,
+        marginHorizontal: 20,
     }
 });
 
