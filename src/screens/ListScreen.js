@@ -22,7 +22,7 @@ const ListScreen = () => {
                 data={names} 
                 renderItem={renderName} 
                 keyExtractor={({name}) => { return name } }
-                showsVerticalScrollIndicator={false}
+                showsVerticalScrollIndicator={true}
             />
         </View>
     );
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         textAlign: 'center',
-        marginVertical: 25,
+        marginVertical: 5,
         fontSize: 20,
         fontWeight: 'bold'
     }
