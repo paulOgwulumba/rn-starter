@@ -29,6 +29,12 @@ const HomeScreen = ({ navigation }) => {
       title="Nature Screen"
       onPress={() => { navigation.navigate('Nature'); }}
     />
+
+  <Button
+      style={styles.content}
+      title="Counter Screen"
+      onPress={() => { navigation.navigate('Counter'); }}
+    />
   </View>
 };
 
