@@ -24,17 +24,23 @@ const HomeScreen = ({ navigation }) => {
       onPress={() => { navigation.navigate('Exercise'); }}
     />
 
-  <Button
-      style={styles.content}
-      title="Nature Screen"
-      onPress={() => { navigation.navigate('Nature'); }}
-    />
+    <Button
+        style={styles.content}
+        title="Nature Screen"
+        onPress={() => { navigation.navigate('Nature'); }}
+      />
 
-  <Button
-      style={styles.content}
-      title="Counter Screen"
-      onPress={() => { navigation.navigate('Counter'); }}
-    />
+    <Button
+        style={styles.content}
+        title="Counter Screen"
+        onPress={() => { navigation.navigate('Counter'); }}
+      />
+
+    <Button
+        style={styles.content}
+        title="Color Screen"
+        onPress={() => { navigation.navigate('Color'); }}
+      />
   </View>
 };
 
