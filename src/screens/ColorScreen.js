@@ -15,7 +15,7 @@ const ColorScreen = () => {
             <TouchableOpacity 
                 style={ styles.button }
                 onPress={() => {
-                    const color = `rgb(${255 * Math.random()}, ${255 * Math.random()}, ${255 * Math.random()})`;
+                    const color = randomRgb(); 
                     list.push({data: '', color, id: key});
                     console.log(list)
                     setList(list);
@@ -62,6 +62,14 @@ const styles = StyleSheet.create({
     },
 
 });
+
+const randomRgb = () => {
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    return `rgb(${red}, ${green}, ${blue})`;
+}
 
 const buttonStyle = {
     padding: 15,

@@ -7,6 +7,7 @@ import ListScreen from "./src/screens/ListScreen";
 import NatureScreen from "./src/screens/NatureScreen";
 import CounterScreen from "./src/screens/CounterScreen";
 import ColorScreen from "./src/screens/ColorScreen";
+import ColorSelectorScreen from "./src/screens/ColorSelectorScreen";
 
 const navigator = createStackNavigator(
   {
@@ -17,9 +18,10 @@ const navigator = createStackNavigator(
     Nature: NatureScreen,
     Counter: CounterScreen,
     Color: ColorScreen,
+    ColorSelector: ColorSelectorScreen,
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "ColorSelector",
     defaultNavigationOptions: {
       title: "My App",
     },
