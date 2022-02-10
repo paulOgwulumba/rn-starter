@@ -6,39 +6,47 @@
  * @param {Number[]} state The array of numbers representing rbg color codes.
  * @param {Object} hook React hook that can change the state of the react state object.
  */
-const editColor = (action = 'add', colorName = 'red', state = [0, 0, 0], hook) => {
-    let indexOfColor = 0;
+const editColor = (state, action) => {
+  let indexOfColor = 0;
 
-    switch(colorName) {
-        case 'red':
-            indexOfColor = 0;
-            break;
-        case 'green':
-            indexOfColor = 1;
-            break;
-        case 'blue':
-            indexOfColor = 2;
-            break;
-        default: 
-            indexOfColor = 0;
+  switch(action.colorName) {
+    case 'red':
+      indexOfColor = 0;
+      break;
+    case 'green':
+      indexOfColor = 1;
+      break;
+    case 'blue':
+      indexOfColor = 2;
+      break;
+    default: 
+      indexOfColor = 0;
+  }
+  
+  switch(action.type) {
+    case 'increment' : {
+      if(state.array[indexOfColor] < 255){
+        state.array[indexOfColor]++;
+        state.string = unpackColor(state.array)
+        console.log(state)
+      }
+      return state;
     }
-    
-    switch(action) {
-        case 'add' : {
-            if(state[indexOfColor] < 255){
-                state[indexOfColor]++;
-                hook(state);
-            }
-            break;
-        }
-        default: {
-            if(state[indexOfColor] > 0){
-                state[indexOfColor]--;
-                hook(state);
-            }
-            break;
-        }
+    default: {
+      if(state.array[indexOfColor] > 0){
+        state.array[indexOfColor]--;
+        state.string = unpackColor(state.array)
+        console.log(state)
+      }
+      return state
     }
+  }
 }
+
+const unpackColor = (color = [0, 0, 0]) => {
+  // console.log(`rgb(${color[0]}, ${color[1]}, ${color[2]})`)
+  return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
+};
+
 
 export default editColor;

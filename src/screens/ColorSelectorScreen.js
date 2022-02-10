@@ -1,73 +1,115 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import editColor from '../utils/editColor';
 
+const initialState = { 
+    array: [255, 255, 0],
+    string: 'rgb(255, 255, 0)'
+  };
+
 const ColorSelectorScreen = () => {
-    const [colors, setColor] = useState([0, 255, 0]);
-    const display = {
-        width: 200,
-        height: 150,
-        marginTop: 20,
-    };
+  const [state, dispatch] = useReducer(editColor, initialState);
 
-    return (
-        <View style={styles.sectionOverview}>
-            <View style={styles.sectionWrapper}>
-                <Text style={styles.text}>Red</Text>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => {
-                        editColor('add', 'red', colors, setColor)
-                    }}
-                >
-                    More Red
-                </TouchableOpacity>
+  const display = {
+    width: 200,
+    height: 150,
+    marginTop: 20,
+  };
 
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => editColor('decrease', 'red', colors, setColor)}
-                >
-                    Less Red
-                </TouchableOpacity>
-            </View>
+  return (
+    <View style={styles.sectionOverview}>
+      <View style={styles.sectionWrapper}>
+        <Text style={styles.text}>Red</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+              dispatch({ 
+                type: 'increment',
+                colorName: 'red' 
+              })
+              console.log(state)
+          }}
+        >
+            More Red
+        </TouchableOpacity>
 
-            <View style={styles.sectionWrapper}>
-                <Text style={styles.text}>Green</Text>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => editColor('add', 'green', colors, setColor)}
-                >
-                    More Green
-                </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            dispatch({ 
+              type: 'decrement',
+              colorName: 'red' 
+            })
+            console.log(state)
+          }}
+        >
+          Less Red
+        </TouchableOpacity>
+      </View>
 
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => editColor('decrease', 'green', colors, setColor)}
-                >
-                    Less Green
-                </TouchableOpacity>
-            </View>
+      <View style={styles.sectionWrapper}>
+        <Text style={styles.text}>Green</Text>
+        <TouchableOpacity
+            style={styles.button}
+            onPress={() => {
+              dispatch({ 
+                type: 'increment',
+                colorName: 'green' 
+              });
+              console.log(state)
+            }}
+        >
+            More Green
+        </TouchableOpacity>
 
-            <View style={styles.sectionWrapper}>
-                <Text style={styles.text}>Blue</Text>
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => editColor('add', 'blue', colors, setColor)}
-                >
-                    More Blue
-                </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            dispatch({ 
+              type: 'decrement',
+              colorName: 'green', 
+            })
+            console.log(state)
+          }}
+        >
+            Less Green
+        </TouchableOpacity>
+      </View>
 
-                <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => editColor('decrease', 'blue', colors, setColor)}
-                >
-                    Less Blue
-                </TouchableOpacity>
-            </View>
+      <View style={styles.sectionWrapper}>
+        <Text style={styles.text}>Blue</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            dispatch({ 
+              type: 'increment',
+              colorName: 'blue' 
+            })
+            console.log(state)
+          }}
+        >
+            More Blue
+        </TouchableOpacity>
 
-            <View style={{ ...display, backgroundColor: unpackColor(colors)}}></View>
-        </View>
-    )
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            dispatch({ 
+              type: 'decrement',
+              colorName: 'blue' 
+            })
+            console.log(state.string)
+          }}
+        >
+            Less Blue
+        </TouchableOpacity>
+      </View>
+
+      <View style={{ ...display, backgroundColor: state.string}}>
+        <Text>{state.string}</Text>
+      </View>
+    </View>
+  )
 };
 
 const styles = StyleSheet.create({
@@ -96,11 +138,5 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 });
-
-
-const unpackColor = (color = [0, 0, 0]) => {
-    console.log(color);
-    return `rgb(${color[0]}, ${color[1]}, ${color[2]})`;
-};
 
 export default ColorSelectorScreen;
