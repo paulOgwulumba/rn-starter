@@ -3,8 +3,8 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import editColor from '../utils/editColor';
 
 const initialState = { 
-    array: [255, 255, 0],
-    string: 'rgb(255, 255, 0)'
+    array: [0, 0, 0],
+    string: 'rgb(0, 0, 0)'
   };
 
 const ColorSelectorScreen = () => {
@@ -27,7 +27,6 @@ const ColorSelectorScreen = () => {
                 type: 'increment',
                 colorName: 'red' 
               })
-              console.log(state)
           }}
         >
             More Red
@@ -40,7 +39,6 @@ const ColorSelectorScreen = () => {
               type: 'decrement',
               colorName: 'red' 
             })
-            console.log(state)
           }}
         >
           Less Red
@@ -56,7 +54,6 @@ const ColorSelectorScreen = () => {
                 type: 'increment',
                 colorName: 'green' 
               });
-              console.log(state)
             }}
         >
             More Green
@@ -69,7 +66,6 @@ const ColorSelectorScreen = () => {
               type: 'decrement',
               colorName: 'green', 
             })
-            console.log(state)
           }}
         >
             Less Green
@@ -85,7 +81,6 @@ const ColorSelectorScreen = () => {
               type: 'increment',
               colorName: 'blue' 
             })
-            console.log(state)
           }}
         >
             More Blue
@@ -98,16 +93,13 @@ const ColorSelectorScreen = () => {
               type: 'decrement',
               colorName: 'blue' 
             })
-            console.log(state.string)
           }}
         >
             Less Blue
         </TouchableOpacity>
       </View>
 
-      <View style={{ ...display, backgroundColor: state.string}}>
-        <Text>{state.string}</Text>
-      </View>
+      <View style={{ ...display, backgroundColor: state.string}}></View>
     </View>
   )
 };

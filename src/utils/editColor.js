@@ -8,6 +8,7 @@
  */
 const editColor = (state, action) => {
   let indexOfColor = 0;
+  let newState = { ...state };
 
   switch(action.colorName) {
     case 'red':
@@ -27,20 +28,25 @@ const editColor = (state, action) => {
     case 'increment' : {
       if(state.array[indexOfColor] < 255){
         state.array[indexOfColor]++;
-        state.string = unpackColor(state.array)
-        console.log(state)
+        state.string = unpackColor(state.array);
+        newState = { ...state };
       }
-      return state;
+      break;
     }
-    default: {
+    case 'decrement': {
       if(state.array[indexOfColor] > 0){
         state.array[indexOfColor]--;
         state.string = unpackColor(state.array)
-        console.log(state)
+        newState = { ...state };
       }
-      return state
+      break;
+    }
+    default: {
+      throw new Error("Invalid action type supplied");
     }
   }
+
+  return newState;
 }
 
 const unpackColor = (color = [0, 0, 0]) => {
