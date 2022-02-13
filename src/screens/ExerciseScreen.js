@@ -1,21 +1,49 @@
-import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, StyleSheet, View, TextInput } from 'react-native';
 
 const ExerciseScreen = () => {
-    const myName = 'Paul';
-    return <View>
-        <Text style={styles.headerText}>Getting started with React Native!</Text>
-        <Text style={styles.bodyText}>My name is {myName} and I have a font-size of 20.</Text>
+    const [ myName, setName ] = useState('Paul');
+    return <View style={styles.wrapper}>
+        <Text 
+          style={styles.headerText}
+        >
+          Getting started with React Native!
+        </Text>
+        <Text 
+          style={styles.bodyText}
+        >
+          My name is {myName} and I have a font-size of 20.
+        </Text>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Enter your text here."
+          onChangeText={
+            (newText) => setName(newText)
+          }
+          defaultValue={myName}
+        />
     </View>;
 };
 
 const styles = StyleSheet.create({
+    wrapper: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: 20,
+    },
     headerText: {
         fontSize: 45,
+        marginVertical: 10,
     },
     bodyText: {
-        fontSize: 20
+        fontSize: 20,
+        marginVertical: 10,
     },
+    TextInput: {
+      height: 40,
+      padding: 10,
+    }
 });
 
 export default ExerciseScreen;

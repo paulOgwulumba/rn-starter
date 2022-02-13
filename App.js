@@ -21,7 +21,7 @@ const navigator = createStackNavigator(
     ColorSelector: ColorSelectorScreen,
   },
   {
-    initialRouteName: "ColorSelector",
+    initialRouteName: "Components",
     defaultNavigationOptions: {
       title: "My App",
     },

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import Card from '../components/Card';
 
 const NatureScreen = () => {
     return(
-        <View style={ styles.wrapper }> 
+        <ScrollView> 
             <Card 
                 imageUrl={require('../images/mountain.jpeg')} 
                 caption='A magnificient mountain'
@@ -22,13 +22,14 @@ const NatureScreen = () => {
                 caption='A fearful forest'
                 imageScore={12}
             />
-        </View>
+        </ScrollView>
     )
 };
 
 const styles = StyleSheet.create({
     wrapper: {
-        overflow: 'scroll'
+        overflow: 'scroll',
+        height: 'fit-content'
     }
 });
 
