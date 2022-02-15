@@ -9,6 +9,7 @@
 const editColor = (state, action) => {
   let indexOfColor = 0;
   let newState = { ...state };
+  const COLOR_INCREMENT = 10;
 
   switch(action.colorName) {
     case 'red':
@@ -27,7 +28,7 @@ const editColor = (state, action) => {
   switch(action.type) {
     case 'increment' : {
       if(state.array[indexOfColor] < 255){
-        state.array[indexOfColor]++;
+        state.array[indexOfColor] += COLOR_INCREMENT;
         state.string = unpackColor(state.array);
         newState = { ...state };
       }
@@ -35,7 +36,7 @@ const editColor = (state, action) => {
     }
     case 'decrement': {
       if(state.array[indexOfColor] > 0){
-        state.array[indexOfColor]--;
+        state.array[indexOfColor] -= COLOR_INCREMENT;
         state.string = unpackColor(state.array)
         newState = { ...state };
       }

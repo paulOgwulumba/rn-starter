@@ -3,8 +3,7 @@ import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 
 const HomeScreen = ({ navigation }) => {
   return <View>
-    <Text style={styles.text}>The screen on which my home exists.</Text>
-    <Text style={styles.content}>This is some random text like that</Text>
+    <Text style={styles.text}>Navigation Screen</Text>
 
     <Button
       style={styles.content}
@@ -46,6 +45,18 @@ const HomeScreen = ({ navigation }) => {
         style={styles.content}
         title="Color Selector Screen"
         onPress={() => { navigation.navigate('ColorSelector'); }}
+      />
+
+    <Button
+        style={styles.content}
+        title="Password Screen"
+        onPress={() => { navigation.navigate('Password'); }}
+      />
+    
+    <Button
+        style={styles.content}
+        title="Layout Exercise Screen"
+        onPress={() => { navigation.navigate('Layout'); }}
       />
   </View>
 };

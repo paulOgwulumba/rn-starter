@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, TextInput } from 'react-native';
 
 const ExerciseScreen = () => {
-    const [ myName, setName ] = useState('Paul');
+    const [ myName, setName ] = useState('');
     return <View style={styles.wrapper}>
         <Text 
           style={styles.headerText}
@@ -17,10 +17,12 @@ const ExerciseScreen = () => {
         <TextInput
           style={styles.TextInput}
           placeholder="Enter your text here."
+          autoCapitalize='words'
+          autoCorrect={true}
           onChangeText={
             (newText) => setName(newText)
           }
-          defaultValue={myName}
+          value={myName}
         />
     </View>;
 };
